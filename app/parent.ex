@@ -5,13 +5,13 @@ defmodule Parent do
   prop :items, :list, default: []
 
   def init(props, component, server) do
-    component = put_state(component, :items, props.items)
+    component = put_state(component, :items_copy, props.items)
 
     {component, server}
   end
 
   def action(:pause, _, component) do
-    items = component.state.items
+    items = component.state.items_copy
 
     js =
       Enum.map_join(items, ";", fn item ->
@@ -24,7 +24,7 @@ defmodule Parent do
   end
 
   def action(:unpause, _, component) do
-    items = component.state.items
+    items = component.state.items_copy
 
     js =
       Enum.map_join(items, ";", fn item ->
