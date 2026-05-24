@@ -11,7 +11,7 @@ defmodule Parent do
   end
 
   def action(:pause, _, component) do
-    items = component.state.items_copy
+    items = component.state.items
 
     js =
       Enum.map_join(items, ";", fn item ->
@@ -24,7 +24,7 @@ defmodule Parent do
   end
 
   def action(:unpause, _, component) do
-    items = component.state.items_copy
+    items = component.state.items
 
     js =
       Enum.map_join(items, ";", fn item ->
