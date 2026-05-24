@@ -5,7 +5,7 @@ defmodule Parent do
   prop :items, :list, default: []
 
   def init(props, component, server) do
-    component = put_state(component, :items_copy, props.items)
+    component = put_state(component, :items, props.items)
 
     {component, server}
   end
